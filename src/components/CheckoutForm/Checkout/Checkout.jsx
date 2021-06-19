@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button, CssBaseline } from '@material-ui/core';
-// import { SettingsPowerSharp } from '@material-ui/icons';
 import { commerce } from '../../../lib/commerce';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 //Styles
 import useStyles from './styles';
@@ -26,7 +25,6 @@ const Checkout = ({ cart, order, onCaptureCheckout, error }) => {
                 setCheckoutToken(token);
             } catch (error) {
                 console.log(error);
-                // history.pushState('/');
             }
         }
         generateToken();

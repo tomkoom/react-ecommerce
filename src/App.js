@@ -23,12 +23,18 @@ const App = () => {
     }
 
     const handleAddToCart = async (productId, quantity) => {
-        const item = await commerce.cart.add(productId, quantity);
-        setCart(item.cart);
+        const { cart } = await commerce.cart.add(productId, quantity);
+        setCart(cart);
+    }
+
+    const handleUpdateCartQty = async (productId, quantity) => {
+        const { cart } = await commerce.cart.update(productId, { quantity });
+        setCart(cart);
     }
 
     const refreshCart = async () => {
         const newCart = await commerce.cart.refresh();
+
         setCart(newCart);
     }
 
@@ -41,11 +47,6 @@ const App = () => {
         } catch (error) {
             setErrorMessage(error.data.error.message);
         }
-    }
-
-    const handleUpdateCartQty = async (productId, quantity) => {
-        const { cart } = await commerce.cart.update(productId, { quantity });
-        setCart(cart);
     }
 
     const handleRemoveFromCart = async (productId) => {
